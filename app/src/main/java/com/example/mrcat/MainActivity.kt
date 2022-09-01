@@ -16,6 +16,7 @@
 package com.example.mrcat
 
 import android.os.Bundle
+import android.provider.Settings.Global.getString
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,7 +45,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Mr. Cat")
+                    Greeting(getString(R.string.hello),
+                        getString(R.string.name))
                 }
             }
         }
@@ -51,7 +54,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
+fun Greeting(hello: String, name: String) {
     val image = painterResource(R.drawable._01)
     Image(
         painter = image,
@@ -62,7 +65,7 @@ fun Greeting(name: String) {
         contentScale = ContentScale.Crop
     )
     Text(
-        text = "Hello from $name!",
+        text = "$hello $name!",
         fontSize = 36.sp,
         modifier = Modifier
             .fillMaxWidth()
@@ -75,6 +78,7 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     MrCatTheme {
-        Greeting("Mr. Cat")
+        Greeting(stringResource(R.string.hello),
+            stringResource(R.string.name))
     }
 }
