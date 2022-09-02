@@ -70,7 +70,7 @@ fun Greeting(hello: String, name: String) {
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentWidth(Alignment.CenterHorizontally)
-            .padding(start = 16.dp, top = 16.dp)
+            .padding(top = 30.dp)
     )
 }
 
